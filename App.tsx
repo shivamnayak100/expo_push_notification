@@ -1,10 +1,50 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import messaging from '@react-native-firebase/messaging'
+import { useEffect, useState } from 'react';
+
 
 export default function App() {
+  const [token, setToken] = useState<string>("");
+  const requestUserPermission = async (): Promise<boolean> => {
+    const authStatus = await messaging().requestPermission();
+    const enabled =
+      authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+      authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+    console.log('################# : ', authStatus);
+    return enabled; // Ensure function always returns a boolean
+  };
+
+  useEffect(() => {
+    const fetchToken = async () => {
+      const hasPermission = await requestUserPermission();
+      if (hasPermission) {
+        messaging()
+          .getToken()
+          .then((token) => {
+            console.log('############# Token:-- ', token);
+            setToken(token);
+          });
+      } else {
+        console.log('########## Permission not granted');
+      }
+
+      
+    };
+
+    fetchToken();
+
+
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <Text>This is expo push notification tutorial. </Text>
+      <Text style={{ marginTop: 10, fontWeight: 'bold' }}>Token:</Text>
+      <Text style={{ padding: 10, backgroundColor: '#f4f4f4', borderRadius: 5 }}>
+        {token || "Fetching token..."}
+      </Text>
       <StatusBar style="auto" />
     </View>
   );
