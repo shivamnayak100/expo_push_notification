@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "688334479007",
+    "project_id": "expo-push-notification-26de2",
+    "storage_bucket": "expo-push-notification-26de2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688334479007:android:9e0b2c82f3a56eb0ebccaa",
+        "android_client_info": {
+          "package_name": "com.shivamnayak.expo_push_notification"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeYcCborDOLDro291jFAIafcVGUXfNRpg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
