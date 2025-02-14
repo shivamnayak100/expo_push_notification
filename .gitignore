@@ -8,6 +8,7 @@ node_modules/
 dist/
 web-build/
 expo-env.d.ts
+expo-push-notification-26de2-firebase-adminsdk-fbsvc-96261e8a6d.json
 
 # Native
 *.orig.*
